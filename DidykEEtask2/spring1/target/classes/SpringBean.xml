@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="duke" class="Juggler">
+    <constructor-arg value="15" /> </bean>
+
+    <bean id ="shevchenko" class="Shevchenko"/>
+
+    <bean id="poeticDuke" class="PoeticJuggler">
+        <constructor-arg value = "15"/>
+        <constructor-arg ref="shevchenko"/>
+    </bean>
+
+    <bean id = "theStage" class="Stage" factory-method="getInstance"/>
+
+    <bean id="kenny" class="Instrumentalist">
+        <property name="song" value="Jingle Bells" />
+        <property name="instrument" ref="piano"/>
+    </bean>
+
+    <bean id = "saxophone" class="Saxophone"/>
+    <bean id = "piano" class="Piano"/>
+
+    <bean id="kenny2" class="Instrumentalist">
+        <property name="song" value="Jingle Bells" />
+        <property name="instrument">
+            <bean class="Saxophone"/>
+        </property>
+    </bean>
+
+    <bean id="poeticDuke2" class="PoeticJuggler">
+        <constructor-arg value = "15"/>
+        <constructor-arg>
+            <bean class="Shevchenko"/>
+        </constructor-arg>
+    </bean>
+
+    <bean id = "hank" class="OneManBand">
+        <property name="instruments">
+            <list>
+                <ref bean="saxophone"/>
+                <ref bean="piano"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id = "hank2" class="OneManBandNew">
+        <property name="instruments">
+            <map>
+                <entry key="SAXOPHONE" value-ref="saxophone"/>
+                <entry key="PIANINO" value-ref="piano"/>
+            </map>
+        </property>
+    </bean>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</beans>

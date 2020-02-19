@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="Man" class="Guitarist">
+    <constructor-arg value="15" /> </bean>
+
+    <bean id ="raining_blood" class="Slayer"/>
+
+    <bean id="poeticOne" class="Vocalist">
+        <constructor-arg value = "15"/>
+        <constructor-arg ref="raining_blood"/>
+    </bean>
+
+    <bean id = "theStage" class="Stage" factory-method="getInstance"/>
+
+    <bean id="kenny" class="Musician">
+        <property name="song" value="Hell Serinade" />
+        <property name="instrument" ref="drum"/>
+    </bean>
+
+    <bean id = "drum" class="Drum"/>
+    <bean id = "guitar" class="Guitar"/>
+
+    <bean id="kenny2" class="Musician">
+        <property name="song" value="Hell Serinade" />
+        <property name="instrument">
+            <bean class="Drum"/>
+        </property>
+    </bean>
+
+    <bean id="poeticDuke2" class="Vocalist">
+        <constructor-arg value = "15"/>
+        <constructor-arg>
+            <bean class="Slayer"/>
+        </constructor-arg>
+    </bean>
+
+    <bean id = "hank" class="RockBand">
+        <property name="instruments">
+            <list>
+                <ref bean="guitar"/>
+                <ref bean="drum"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id = "hank2" class="RockBandNew">
+        <property name="instruments">
+            <map>
+                <entry key="GUITAR" value-ref="guitar"/>
+                <entry key="DRUM" value-ref="drum"/>
+            </map>
+        </property>
+    </bean>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</beans>
